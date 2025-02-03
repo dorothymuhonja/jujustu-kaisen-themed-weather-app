@@ -9,10 +9,6 @@ a {
     text-decoration: none;
 }
 
-header {
-    border-bottom: 1px solid rgb(27, 39, 39);
-    padding: 0 0 30px 0;
-}
 
 .weather-app {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/choso.jpg');
@@ -45,7 +41,54 @@ header {
     font-size: 16px;
 }
 
+.weather-app-data {
+    display: flex;
+    justify-content: space-between;
+}
 
+main {
+    padding: 30px 0;
+}
+
+.weather-app-city {
+    margin: 0;
+    font-size: 38px;
+    line-height: 45px;
+}
+
+.weather-app-details {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.weather-app-details strong {
+    color: rgb(131, 191, 206);
+
+}
+
+.weather-app-icon {
+    font-size: 44px;
+    margin-top: 22px;
+    
+}
+
+.weather-app-temperature {
+    display: flex;
+}
+
+.weather-app-temperature-value {
+    font-size: 88px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.weather-app-unit {
+    margin-top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+}
 
 footer {
     border-top: 1px solid rgb(27, 39, 39);
