@@ -6,14 +6,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <link rel="stylesheet" href="src/style.css">
     <title>Jujustu Kaisen theme weather app</title>
 </head>
 <body>
     <div class="weather-app">
         <header>
-            <form class="search-form">
-                <input type="search" placeholder="Enter a city..."required class="search-form-input"/>
+            <form class="search-form" id="search-form">
+                <input type="search" placeholder="Enter a city..."required class="search-form-input" id="search-form-input"/>
                 <input type="submit" value="search" class="search-form-button"/>
             </form>
 
@@ -23,7 +25,7 @@
             <div class="weather-app-data">
                 <div>
 
-                    <h1 class="weather-app-city">Nairobi</h1>
+                    <h1 class="weather-app-city" id="weather-app-city">Nairobi</h1>
                     <p class="weather-app-details">
                         Monday 19:23, scattered clouds
                         <br/>
