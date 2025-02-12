@@ -18,6 +18,8 @@ function updateWeather(response) {
     windSpeedElement.innerHTML = `${Math.round(wind)}km/h`;
     timeElement.innerHTML = formatDate(date);
     
+    getForecast(response.data.city);
+    
 }
 
 function formatDate(date) {
@@ -51,6 +53,12 @@ function searchCity(city) {
 
 }
 
+function getForecast(city) {
+    let apiKey = "e0ec6b874369tb90f96386aaf483o95a";
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
+}
+
 function handleSubmit(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#search-form-input");
@@ -60,7 +68,7 @@ function handleSubmit(event) {
     
 }
 
-function displayForecast() {
+function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast");
     
     let days = ['Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
@@ -102,5 +110,6 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSubmit);
 
 searchCity("Nairobi");
+
 displayForecast();
 
