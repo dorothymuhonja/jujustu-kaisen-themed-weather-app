@@ -68,36 +68,48 @@ function handleSubmit(event) {
     
 }
 
+function formatDay(timestamp) {
+   let date =  new Date(timestamp * 1000);
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+    return days[date.getDay()];
+}
+
 function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast");
     
-    let days = ['Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
 
     let forecastHtml = "";
+    
 
-    days.forEach(function(day) {
-        forecastHtml = forecastHtml + `
-        <div class="weather-forecast-day">
-            <div class="weather-forecast-date">
-                ${day}
-            </div>
-            <div class="weather-forecast-icon">
-                🌥️
-            </div>
-            <div class="weather-forecast-temperatures">
-                <div class="weather-forecast-temperature">
-                    <strong>15°</strong> 
+    response.data.daily.forEach(function(day, index) {
+        if (index < 5) {
+            let maximum = Math.round(day.temperature.maximum);
+            let minimum = Math.round(day.temperature.minimum);
+            let icon = day.condition.icon_url;
+
+            forecastHtml = forecastHtml + `
+            <div class="weather-forecast-day">
+                <div class="weather-forecast-date">
+                    ${formatDay(day.time)}
                 </div>
-                <div class="weather-forecast-temperature">
-                    9°
-                </div>
+            
+                <img src="${icon}" class="weather-forecast-icon" />
+            
+                <div class="weather-forecast-temperatures">
+                    <div class="weather-forecast-temperature">
+                        <strong>${maximum}°</strong> 
+                    </div>
+                    <div class="weather-forecast-temperature">
+                        ${minimum}°
+                    </div>
                         
-            </div>
-        </div>  
+                </div>
+            </div>  
 
-    `;
-
-    forecastElement.innerHTML = forecastHtml;
+            `;
+        }
+        forecastElement.innerHTML = forecastHtml;
 
     });
 
